@@ -1,6 +1,12 @@
 #!/bin/bash
 
-curl http://get.docker.io | bash
+which docker || curl http://get.docker.io | sudo bash
+
+# Pull external containers
+sudo docker pull scratch
+sudo docker pull busybox
+sudo docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
+
 
 which apt &>/dev/null && {
   export DEBIAN_FRONTEND=noninteractive 

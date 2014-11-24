@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Pull external containers
-#sudo docker pull scratch
-sudo docker pull busybox
-sudo docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
 
 build_list="$(cat build.txt | grep -v '^#')"
 
