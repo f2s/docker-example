@@ -1,18 +1,37 @@
 docker-example
 ==============
 
+This will create an example LAMP stack showing php querying and updating mysql database container
 
-Installation/Setup
+
+### 1. Installation/Setup
+
+This section will install the necessary dependencies for docker to operate
+
 ```bash
 ./setup.sh
 ```
 
-Build images
+### 2. Build images
+
+This will iterate through the build.txt file and tag successful images
+
 ```bash
 ./build.sh
 ```
 
-Run images
+### 3. Run images
+
+Creates runtime containers based on images previously created
+
 ```bash
 ./run.sh
+```
+
+### 4. View results
+
+Browse http://localhost:5000 to see results
+
+```
+curl http://localhost:5000
 ```
