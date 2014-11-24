@@ -7,7 +7,11 @@ echo "Reading from a database attached using docker links";
 
 mysql_select_db('test') or die('Could not select database');
 
-$query = 'select * from my_table';
+$query = 'insert into my_table values ( "page_view", now() )';
+$result = mysql_query($query) or die ("Query failed: " . mysql_error());
+mysql_free_result($result);
+
+$query = 'select * from my_table order by value desc';
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 
 echo "<table>\n";
