@@ -9,6 +9,9 @@ This will create an example LAMP stack showing php querying and updating mysql d
 This section will install the necessary dependencies for docker to operate
 
 ```bash
+apt-get install -y git
+git clone https://github.com/f2s/docker-example.git
+cd docker-example
 ./setup.sh
 ```
 
