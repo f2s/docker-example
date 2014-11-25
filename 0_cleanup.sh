@@ -7,4 +7,4 @@ read RESPONSE
 
 sudo docker rm -f $(sudo docker ps -q)
 #sudo docker rm -f $(sudo docker ps -qa)
-#sudo docker rmi $(sudo docker images -q)
+#sudo docker rmi -f $(sudo docker images -q)
