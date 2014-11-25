@@ -1,3 +1,4 @@
 base
+nginx-proxy
 mysql-test
 apache-php

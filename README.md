@@ -12,7 +12,7 @@ This section will install the necessary dependencies for docker to operate
 apt-get install -y git
 git clone https://github.com/f2s/docker-example.git
 cd docker-example
-./setup.sh
+./1_setup.sh
 ```
 
 ### 2. Build images
@@ -20,7 +20,7 @@ cd docker-example
 This will iterate through the build.txt file and tag successful images
 
 ```bash
-./build.sh
+./2_build.sh
 ```
 
 ### 3. Run images
@@ -28,7 +28,7 @@ This will iterate through the build.txt file and tag successful images
 Creates runtime containers based on images previously created
 
 ```bash
-./run.sh
+./3_run.sh
 ```
 
 ### 4. View results

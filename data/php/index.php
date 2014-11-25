@@ -3,7 +3,8 @@
 $link = mysql_connect('mysql', 'test', 'test')
         or die ('Could not connect: ' . mysql_error());
 
-echo "Reading from a database attached using docker links";
+echo "<b>App Container hostname:</b> " . gethostname() . "<br>\n";
+echo "PHP container reading from a database container attached using docker links<br><br>\n";
 
 mysql_select_db('test') or die('Could not select database');
 
@@ -22,6 +23,7 @@ while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	}
 	echo "\t</tr>\n";
 }
+echo "</table>\n";
 
 mysql_free_result($result);
 mysql_close($link);
