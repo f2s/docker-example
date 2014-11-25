@@ -1,7 +1,7 @@
 <?php
 
 echo "<b>App Container hostname:</b> " . gethostname() . "<br>\n";
-echo "PHP container reading from a database container attached using docker links<br><br>\n";
+echo "Nginx (reverse proxy) directing to Apache PHP (application) container reading from a mysql (database) container attached using docker links<br><br>\n";
 
 $link = mysql_connect('mysql', 'test', 'test')
         or die ('Could not connect: ' . mysql_error());
