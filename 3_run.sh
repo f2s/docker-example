@@ -41,9 +41,10 @@ sudo docker run \
             --link apache-php:upstream \
             -t nginx-proxy-test
 
-echo "Please connect to: "
+echo -e "\nPlease connect to: "
 echo "http://localhost:${PRESENTATION_PORT}"
 echo "https://localhost:$((PRESENTATION_PORT+1))"
 
-sleep 1
+echo -e "\nSleeping for 5 seconds..."
+sleep 5
 curl http://localhost:${PRESENTATION_PORT}
