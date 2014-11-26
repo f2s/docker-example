@@ -12,7 +12,7 @@ EXPOSE 3306/tcp
 CMD mysql_install_db; \
     chown -R mysql:mysql /var/lib/mysql; \
     service mysql start; \
-    sleep 10; \
+    until nc -w1 localhost 3306; do sleep 0.5; done; \
     echo "create user 'test'@'%' identified by 'test'" | mysql; \
     echo "grant all privileges on test.* to 'test'@'%' with grant option;" | mysql; \
     echo "create database test;" | mysql; \

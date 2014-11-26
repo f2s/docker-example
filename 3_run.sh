@@ -3,11 +3,11 @@
 PRESENTATION_PORT=5000
 
 # Create directory link containers
-mkdir -p ${PWD}/data/{php,mysql} &>/dev/null
+mkdir -p ${PWD}/data/{php,mysql,nginx-proxy} &>/dev/null
 sudo docker rm -f data-php data-mysql data-nginx-proxy &>/dev/null
-sudo docker run --name data-php -v $PWD/data/php:/var/www/html busybox true #&>/dev/null
-sudo docker run --name data-mysql -v $PWD/data/mysql:/var/lib/mysql busybox true #&>/dev/null
-sudo docker run --name data-nginx-proxy -v $PWD/data/nginx-proxy:/etc/nginx/sites-enabled busybox true
+sudo docker run --name data-php -v $PWD/data/php:/var/www/html scratch bash &>/dev/null
+sudo docker run --name data-mysql -v $PWD/data/mysql:/var/lib/mysql scratch bash &>/dev/null
+sudo docker run --name data-nginx-proxy -v $PWD/data/nginx-proxy:/etc/nginx/sites-enabled scratch bash &>/dev/null
 
 sudo docker rm \
             -f \
@@ -41,10 +41,10 @@ sudo docker run \
             --link apache-php:upstream \
             -t nginx-proxy-test
 
+
+echo -e "\nWaiting for webserver start..."
+until curl http://localhost:${PRESENTATION_PORT} &>/dev/null; do sleep 0.5; done
+
 echo -e "\nPlease connect to: "
 echo "http://localhost:${PRESENTATION_PORT}"
 echo "https://localhost:$((PRESENTATION_PORT+1))"
-
-echo -e "\nSleeping for 5 seconds..."
-sleep 5
-curl http://localhost:${PRESENTATION_PORT}
