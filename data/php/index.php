@@ -17,7 +17,7 @@ echo "Nginx (reverse proxy) directing to Apache PHP (application) container read
 $query = 'insert into my_table values ( "page_view", now() )';
 $result = mysql_query($query) 
           or die ("Query failed: " . mysql_error());
-mysql_free_result($result);
+#mysql_free_result($result);
 
 $query = 'select * from my_table order by value desc';
 $result = mysql_query($query)
