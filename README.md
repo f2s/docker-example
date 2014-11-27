@@ -31,7 +31,7 @@ Creates runtime containers based on images previously created
 ./3_run.sh
 
 Or alternatively:
-sudo fig up
+sudo fig kill; sudo fig up
 
 ```
 
