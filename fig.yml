@@ -1,0 +1,28 @@
+#sudo docker run --name data-php -v $PWD/data/php:/var/www/html scratch bash &>/dev/null
+#sudo docker run --name data-mysql -v $PWD/data/mysql:/var/lib/mysql scratch bash &>/dev/null
+#sudo docker run --name data-nginx-proxy -v $PWD/data/nginx-proxy:/etc/nginx/sites-enabled scratch bash &>/dev/null
+
+
+nginx:
+  image: nginx-proxy-test
+  links: 
+    - apache:upstream
+  ports:
+    - "5000:80"
+    - "5001:443"
+  volumes:
+    - data/nginx-proxy/:/etc/nginx/sites-enabled:ro
+apache:
+  image: apache-php
+  links:
+    - mysql
+  ports: 
+    - "80"
+  volumes:
+    - data/php/:/var/www/html:ro
+mysql:
+  image: mysql-test
+  ports: 
+    - "3306"
+  volumes:
+    - data/mysql/:/var/lib/mysql

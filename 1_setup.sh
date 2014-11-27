@@ -1,6 +1,7 @@
 #!/bin/bash
 
 which docker || curl http://get.docker.io | sudo bash
+which fig || sudo apt-get install -y python-pip && sudo pip install -U fig
 
 # Pull external containers
 sudo docker pull scratch
@@ -10,8 +11,8 @@ sudo docker run --rm -v /usr/local/bin:/target jpetazzo/nsenter
 
 which apt &>/dev/null && {
   export DEBIAN_FRONTEND=noninteractive 
-  apt-get update
-  apt-get install --fix-missing -y git
+  sudo apt-get update
+  sudo apt-get install --fix-missing -y git
 } || {
 	echo "centos not supported"
 	exit 1

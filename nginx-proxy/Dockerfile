@@ -17,4 +17,5 @@ EXPOSE 80/tcp
 EXPOSE 443/tcp
 
 CMD until nc -w1 upstream 80; do sleep 0.5; done; \
-    nginx
+    service nginx start; \
+    tail -f /var/log/nginx/*

@@ -29,6 +29,10 @@ Creates runtime containers based on images previously created
 
 ```bash
 ./3_run.sh
+
+Or alternatively:
+sudo fig up
+
 ```
 
 ### 4. View results
